@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng Của Bạn - Mobile Shop</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="top-header">
+            <div class="container d-flex space-between align-center">
+                <div class="logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Mobile Shop
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+                <div class="user-actions-group d-flex align-center">
+                    <a href="cart.html" class="action-item cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="badge">0</span>
+                    </a>
+                    <div class="action-item heart-icon">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <a href="profile.html" class="action-item user-profile">
+                    <i class="fa-solid fa-user"></i> Tài khoản</a>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-menu">
+            <div class="container">
+                <ul class="d-flex">
+                    <li><a href="trangchu.html">Trang chủ</a></li>
+                    <li><a href="#">Sản phẩm</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container main-layout" style="grid-template-columns: 1fr; padding-top: 30px;">
+        
+        <section class="cart-header">
+            <h1 class="cart-title"><i class="fa-solid fa-cart-shopping"></i> Giỏ Hàng Của Bạn</h1>
+            <p class="cart-subtitle">Quản lý sản phẩm dễ dàng</p>
+        </section>
+
+        <section class="cart-items-table-section">
+            <table class="cart-table">
+                <thead>
+                    <tr class="table-header-row">
+                        <th>#</th>
+                        <th>SẢN PHẨM</th>
+                        <th>GIÁ BÁN</th>
+                        <th>SỐ LƯỢNG</th>
+                        <th>THÀNH TIỀN</th>
+                        <th>THAO TÁC</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="cart-item-row">
+                        <td data-label="#">1</td>
+                        <td data-label="SẢN PHẨM" class="product-name-cell">iPhone 15 Pro Max</td>
+                        <td data-label="GIÁ BÁN" class="price-cell price-sell">33.990.000 VNĐ</td>
+                        <td data-label="SỐ LƯỢNG">
+                            <div class="quantity-control">
+                                <button class="qty-btn minus">-</button>
+                                <input type="text" value="1" class="qty-input">
+                                <button class="qty-btn plus">+</button>
+                            </div>
+                        </td>
+                        <td data-label="THÀNH TIỀN" class="price-cell price-total">33.990.000 VNĐ</td>
+                        <td data-label="THAO TÁC" class="actions-cell">
+                            <button class="action-btn btn-edit"><i class="fa-solid fa-pen"></i> Sửa</button>
+                            <button class="action-btn btn-delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
+                        </td>
+                    </tr>
+                    </tbody>
+            </table>
+        </section>
+
+        <section class="cart-summary-section">
+            <div class="promo-code-box d-flex space-between align-center">
+                <label for="promo-input">Mã khuyến mãi:</label>
+                <div class="promo-input-group d-flex">
+                    <input type="text" id="promo-input" placeholder="Nhập mã khuyến mãi">
+                    <button class="btn btn-apply">Áp dụng</button>
+                </div>
+            </div>
+
+            <div class="total-summary-box">
+                <div class="summary-line">
+                    <span class="label">Tổng tiền hàng:</span>
+                    <span class="value">33.990.000 VNĐ</span>
+                </div>
+                <div class="summary-line discount-line">
+                    <span class="label">Mã giảm giá:</span>
+                    <span class="value">-0 VNĐ</span>
+                </div>
+                
+                <div class="summary-line total-pay-line">
+                    <h3 class="label">Tổng Thanh Toán:</h3>
+                    <h3 class="value price-final">33.990.000 VNĐ</h3>
+                </div>
+            </div>
+        </section>
+
+        <section class="final-actions d-flex justify-center">
+            <button class="btn btn-continue-shopping"><i class="fa-solid fa-arrow-left"></i> Tiếp tục mua sắm</button>
+            <button class="btn btn-checkout"><i class="fa-solid fa-box-archive"></i> Đặt hàng ngay</button>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center; padding: 18px; color: #666;">
+            &copy; 2025 Mobile Shop. All rights reserved.
+        </div>
+    </footer>
+
+    </body>
+</html>

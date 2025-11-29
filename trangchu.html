@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Shop - Điện thoại chính hãng</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="top-header">
+            <div class="container d-flex space-between align-center">
+                <div class="logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Mobile Shop
+                </div>
+                
+                <div class="search-bar">
+                    <form action="search.html" method="GET"> 
+                     <input type="text" name="q" placeholder="Tìm kiếm...">
+                 <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                     </form>
+                </div>
+
+                <div class="user-actions-group d-flex align-center">
+                    <a href="cart.html" class="action-item cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="badge">0</span>
+                    </a>
+    
+                <div class="action-item heart-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+    
+    <a href="profile.html" class="action-item user-profile">
+        <i class="fa-solid fa-user"></i> Tài khoản
+    </a>
+</div>
+            </div>
+        </div>
+
+        <nav class="main-menu">
+            <div class="container">
+                <ul class="d-flex">
+                    <li><a href="trangchu.html" class="active">Trang chủ</a></li>
+                    <li><a href="#">Sản phẩm</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+    <div class="container hero-card-container">
+        
+        <div class="hero-content">
+            <h1>Mobile Shop</h1>
+            <p>Điện thoại chính hãng - Giá tốt nhất thị trường - Bảo hành toàn quốc</p>
+            
+            <div class="stats d-flex">
+                <div class="stat-item">
+                    <strong>10K+</strong>
+                    <span>KHÁCH HÀNG</span>
+                </div>
+                <div class="stat-item">
+                    <strong>500+</strong>
+                    <span>SẢN PHẨM</span>
+                </div>
+                <div class="stat-item">
+                    <strong>99%</strong>
+                    <span>HÀI LÒNG</span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+    <main class="container main-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-box">
+                <h3 class="sidebar-title"><i class="fa-solid fa-list"></i> Danh mục sản phẩm</h3>
+                <ul class="category-list">
+                    <li><a href="#">Apple</a></li>
+                    <li><a href="#">Samsung</a></li>
+                    <li><a href="#">Xiaomi</a></li>
+                    <li><a href="#">OPPO</a></li>
+                    <li><a href="#">Realme</a></li>
+                    <li><a href="#">Nokia</a></li>
+                    <li><a href="#">Asus</a></li>
+                </ul>
+            </div>
+        </aside>
+
+        <section class="content-area">
+            <div class="section-header d-flex space-between align-center">
+                <h2><i class="fa-solid fa-star" style="color: #f7b733;"></i> Sản phẩm nổi bật</h2>
+                <a href="#" class="view-all-btn">Xem tất cả <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+
+            <div class="product-grid" id="product-list-container">
+                <p>Đang tải sản phẩm...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center; padding: 20px; color: #666;">
+            &copy; 2025 Mobile Shop. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="script.js"></script> 
+
+</body>
+</html>

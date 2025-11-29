@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin tài khoản - Mobile Shop</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="top-header">
+            <div class="container d-flex space-between align-center">
+                <div class="logo">
+                    <i class="fa-solid fa-mobile-screen-button"></i> Mobile Shop
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="Tìm kiếm...">
+                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+
+                <div class="user-actions-group d-flex align-center">
+                    <a href="cart.html" class="action-item cart-icon">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                            <span class="badge">0</span>
+                    </a>
+    
+                <div class="action-item heart-icon">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                    <div class="action-item user-profile">
+                        <i class="fa-solid fa-user"></i> Tài khoản
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="main-menu">
+            <div class="container">
+                <ul class="d-flex">
+                    <li><a href="trangchu.html">Trang chủ</a></li>
+                    <li><a href="#">Sản phẩm</a></li>
+                    <li><a href="#">Khuyến mãi</a></li>
+                    <li><a href="#">Tin tức</a></li>
+                    <li><a href="#">Liên hệ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container main-layout" style="grid-template-columns: 1fr;"> 
+        
+        <section class="profile-header-banner">
+            <div class="profile-avatar">
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <h1 class="profile-title">Thông tin tài khoản</h1>
+            <p class="profile-subtitle">Quản lý thông tin cá nhân của bạn</p>
+        </section>
+
+        <section class="info-cards-grid">
+            
+            <div class="info-card">
+                <div class="card-title-group d-flex align-center">
+                    <i class="fa-solid fa-user-check" style="color: var(--primary-blue);"></i>
+                    <h3 class="card-title">Thông tin tài khoản</h3>
+                </div>
+                
+                <div class="info-item">
+                    <p class="info-label"><i class="fa-solid fa-pen"></i> Tên đăng nhập</p>
+                    <p class="info-value">test</p>
+                </div>
+                
+                <div class="info-item">
+                    <p class="info-label"><i class="fa-solid fa-calendar-days"></i> Ngày tham gia</p>
+                    <p class="info-value">10/07/2025</p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-title-group d-flex align-center">
+                    <i class="fa-solid fa-shield-halved" style="color: var(--primary-blue);"></i>
+                    <h3 class="card-title">Phân quyền</h3>
+                </div>
+                
+                <div class="info-item">
+                    <p class="info-label"><i class="fa-solid fa-star"></i> Vai trò</p>
+                    <span class="role-badge user-role">USER</span>
+                </div>
+                
+                <div class="info-item">
+                    <p class="info-label"><i class="fa-solid fa-check-circle"></i> Trạng thái</p>
+                    <span class="status-verified">Đã xác thực</span>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-title-group d-flex align-center">
+                    <i class="fa-solid fa-clock" style="color: var(--primary-blue);"></i>
+                    <h3 class="card-title">Hoạt động</h3>
+                </div>
+                
+                <div class="info-item-activity">
+                    <p class="info-label"><i class="fa-solid fa-clock-rotate-left"></i> Lần cuối đăng nhập</p>
+                    <div class="activity-time-date">
+                        <span class="activity-time">09:36</span>
+                        <span class="activity-date">10/07/2025</span>
+                    </div>
+                </div>
+                
+                <div class="info-item-activity">
+                    <p class="info-label"><i class="fa-solid fa-hashtag"></i> Số lần đăng nhập</p>
+                    <p class="info-value-right">1</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="account-management">
+            <h2 class="management-title">Quản lý tài khoản</h2>
+            <div class="management-buttons d-flex justify-center">
+                <button class="btn btn-primary-blue"><i class="fa-solid fa-pencil"></i> Chỉnh sửa thông tin</button>
+                <button class="btn btn-warning"><i class="fa-solid fa-lock"></i> Đổi mật khẩu</button>
+                <button class="btn btn-danger"><i class="fa-solid fa-right-from-bracket"></i> Đăng xuất</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container" style="text-align: center; padding: 18px; color: #666;">
+            &copy; 2025 Mobile Shop. All rights reserved.
+        </div>
+    </footer>
+
+    </body>
+</html>
