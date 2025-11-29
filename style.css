@@ -1093,3 +1093,189 @@ footer {
     .final-actions { flex-direction: column; }
     .final-actions button { width: 90%; }
 }
+/* --- Giao diện Trang Chi Tiết Sản Phẩm (Product Detail) --- */
+
+/* Màu sắc chuyên biệt cho trang Chi tiết */
+:root {
+    --price-detail-color: #e74c3c; /* Màu đỏ cam cho giá */
+    --btn-add-bg: #4e7eff; /* Xanh cho Thêm vào giỏ */
+    --btn-buy-bg: #f39c12; /* Cam cho Mua ngay */
+    --qty-border-color: #ccc;
+    /* Có thể cần biến --price-total-color nếu nó được dùng ở đây */
+}
+
+.product-detail-card {
+    background: var(--white);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #eee;
+}
+
+.product-detail-grid {
+    display: grid;
+    grid-template-columns: 40% 1fr; /* 40% cho ảnh, còn lại cho thông tin */
+    gap: 50px;
+    align-items: flex-start;
+}
+
+/* Cột trái: Ảnh */
+.product-image-display {
+    text-align: center;
+    padding: 10px;
+}
+
+.product-image-display img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Cột phải: Thông tin */
+.product-info-area {
+    padding-top: 10px;
+}
+
+.product-name-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 25px;
+}
+
+/* Khối Meta (Đơn vị tính, Mô tả) */
+.product-meta {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    color: var(--text-gray);
+}
+
+.product-meta .meta-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    min-width: 80px; /* Căn chỉnh các label */
+}
+
+.product-description-box {
+    display: block;
+    margin-bottom: 30px;
+}
+
+.product-description-box .meta-label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Giá bán */
+.product-price-display {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: baseline;
+    gap: 15px;
+}
+
+.price-label {
+    font-size: 16px;
+    color: var(--text-gray);
+    font-weight: 500;
+}
+
+.price-value {
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--price-detail-color); /* Màu đỏ cam nổi bật */
+}
+
+/* Số lượng */
+.quantity-selection-group {
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.quantity-label {
+    font-size: 16px;
+    color: var(--text-dark);
+    font-weight: 500;
+}
+
+.quantity-control-detail {
+    display: inline-flex;
+    border: 1px solid var(--qty-border-color);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.qty-btn-detail {
+    background: #f8f8f8;
+    border: none;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: var(--text-dark);
+    transition: 0.2s;
+}
+
+.qty-input-detail {
+    width: 50px;
+    text-align: center;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+/* Nút Hành động */
+.action-buttons-group {
+    gap: 15px;
+}
+
+.btn-add-to-cart, .btn-buy-now {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-add-to-cart {
+    background-color: var(--btn-add-bg);
+    flex-grow: 1; /* Nút này chiếm nhiều không gian hơn */
+}
+
+.btn-buy-now {
+    background-color: var(--btn-buy-bg);
+    padding: 12px 30px; /* Padding lớn hơn */
+}
+
+.btn-add-to-cart:hover, .btn-buy-now:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .product-detail-grid {
+        grid-template-columns: 1fr; /* Xếp chồng trên màn hình nhỏ */
+    }
+    .product-info-area {
+        padding-top: 20px;
+    }
+    .product-price-display {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+}
+
