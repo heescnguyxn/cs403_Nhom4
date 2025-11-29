@@ -1,29 +1,23 @@
 const API_URL = 'http://localhost:3000/api/products';
-const DETAIL_API_URL = 'http://localhost:3000/api/products/'; // Dùng cho trang chi tiết sản phẩm
+const DETAIL_API_URL = 'http://localhost:3000/api/products/'; 
 const container = document.getElementById('product-list-container'); 
 
-// --- 1. UTILITY FUNCTIONS ---
-
-// Hàm format tiền tệ (ví dụ: 33990000 -> 33.990.000 VNĐ)
+// --- UTILITY FUNCTIONS ---
 function formatCurrency(number) {
     if (typeof number !== 'number') return '0 VNĐ';
     return number.toLocaleString('vi-VN') + ' VNĐ'; 
 }
 
-// Hàm render một thẻ sản phẩm (dùng cho index.html và search.html)
+// Hàm render thẻ sản phẩm (dùng cho danh sách)
 function renderProductCard(product, isSearchPage = false) {
     const priceFormatted = formatCurrency(product.price);
-    
-    // Đảm bảo API trả về ID để tạo liên kết động
     if (!product.id) return ''; 
 
-    // Kiểm tra xem đây là trang tìm kiếm hay không để hiển thị nhãn
     const label = isSearchPage 
         ? `<span class="label-found">TÌM THẤY</span>` 
         : (product.isHot ? `<span class="label-hot">HOT</span>` : '');
 
     const buttonText = isSearchPage ? 'Xem chi tiết' : 'Xem ngay';
-    // Liên kết động tới trang chi tiết với ID
     const detailUrl = `product-detail.html?id=${product.id}`;
 
     return `
@@ -42,13 +36,10 @@ function renderProductCard(product, isSearchPage = false) {
     `;
 }
 
-/**
- * Hàm tạo HTML cho giao diện chi tiết sản phẩm (Cần khớp với product-detail.html)
- */
+// Hàm render nội dung trang chi tiết sản phẩm
 function renderProductDetailHTML(product) {
     const formattedPrice = formatCurrency(product.price);
     
-    // Sử dụng cấu trúc HTML từ file product-detail.html của bạn
     return `
         <div class="product-detail-grid">
             
@@ -93,40 +84,35 @@ function renderProductDetailHTML(product) {
     `;
 }
 
-// --- 2. CORE FETCH LOGIC ---
+// --- CORE FETCH LOGIC ---
+let currentCategory = null;
 
-/**
- * Hàm chính: Gọi API và hiển thị danh sách sản phẩm
- * @param {string} searchQuery - Từ khóa tìm kiếm (chỉ dùng cho trang search)
- */
-async function fetchProducts(searchQuery = '') {
+async function fetchProducts(filterValue = '', filterType = 'query') {
     if (!container) return;
 
     let finalApiUrl = API_URL;
-    if (searchQuery) {
-        finalApiUrl = `${API_URL}?q=${encodeURIComponent(searchQuery)}`;
+    
+    if (filterValue) {
+        if (filterType === 'query') { 
+            finalApiUrl = `${API_URL}?q=${encodeURIComponent(filterValue)}`;
+        } else if (filterType === 'category') { 
+            finalApiUrl = `${API_URL}?category=${encodeURIComponent(filterValue)}`;
+        }
     }
 
     container.innerHTML = '<p style="text-align: center; color: var(--text-gray);">Đang tải sản phẩm...</p>';
-    
     const isSearchPage = window.location.pathname.includes('search.html'); 
     
     try {
         const response = await fetch(finalApiUrl);
-        
-        if (!response.ok) {
-            throw new Error(`Lỗi HTTP: ${response.status}`);
-        }
-
+        if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
         const products = await response.json(); 
-        
         container.innerHTML = ''; 
 
         if (products.length === 0) {
-            const message = searchQuery 
-                ? `Không tìm thấy sản phẩm nào cho từ khóa "<strong>${searchQuery}</strong>".` 
+            const message = filterValue 
+                ? `Không tìm thấy sản phẩm nào cho từ khóa/danh mục "<strong>${filterValue}</strong>".` 
                 : 'Hiện tại chưa có sản phẩm nào.';
-            
             container.innerHTML = `<p style="grid-column: 1 / -1; text-align: center; color: var(--text-gray); padding: 30px;">${message}</p>`;
             return;
         }
@@ -141,12 +127,7 @@ async function fetchProducts(searchQuery = '') {
     }
 }
 
-/**
- * Hàm tải chi tiết sản phẩm dựa trên ID (Dùng cho product-detail.html)
- * @param {string} productId - ID của sản phẩm cần tìm
- */
 async function fetchProductDetail(productId) {
-    // Container cho trang chi tiết sản phẩm
     const detailContainer = document.querySelector('.product-detail-card');
     if (!detailContainer) return;
 
@@ -155,30 +136,46 @@ async function fetchProductDetail(productId) {
     try {
         const response = await fetch(DETAIL_API_URL + productId);
         
-        if (response.status === 404) {
-             throw new Error("Sản phẩm không tồn tại.");
-        }
-        if (!response.ok) {
-            throw new Error(`Lỗi HTTP: ${response.status}`);
-        }
+        if (response.status === 404) throw new Error("Sản phẩm không tồn tại.");
+        if (!response.ok) throw new Error(`Lỗi HTTP: ${response.status}`);
         
         const product = await response.json(); 
-        
-        // Cập nhật HTML động cho trang chi tiết
         detailContainer.innerHTML = renderProductDetailHTML(product);
 
     } catch (error) {
         console.error('Lỗi khi tải chi tiết sản phẩm:', error);
-        const errorMessage = error.message.includes('không tồn tại') 
-            ? error.message 
-            : '❌ Lỗi kết nối hoặc API không phản hồi đúng.';
-        
+        const errorMessage = error.message.includes('không tồn tại') ? error.message : '❌ Lỗi kết nối hoặc API không phản hồi đúng.';
         detailContainer.innerHTML = `<p style="text-align: center; color: red; padding: 50px;">${errorMessage}</p>`;
     }
 }
 
 
-// --- 3. INIT LOGIC ---
+// --- INIT LOGIC ---
+
+function handleCategoryFilter(event) {
+    event.preventDefault(); 
+    const link = event.target.closest('.category-link');
+    if (!link) return;
+
+    const categoryId = link.getAttribute('data-category-id');
+
+    // Cập nhật trạng thái active (CSS)
+    document.querySelectorAll('.category-link').forEach(item => {
+        item.classList.remove('active');
+    });
+    link.classList.add('active');
+    
+    // Gọi API để lọc sản phẩm
+    currentCategory = categoryId;
+    fetchProducts(categoryId, 'category'); 
+}
+
+function initCategoryFilter() {
+    const categoryList = document.getElementById('category-list');
+    if (categoryList) {
+        categoryList.addEventListener('click', handleCategoryFilter);
+    }
+}
 
 function initDetailPage() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -193,7 +190,6 @@ function initDetailPage() {
         }
     }
 }
-
 
 function initApp() {
     // 1. Logic cho Trang Chi Tiết
@@ -218,8 +214,8 @@ function initApp() {
     } else if (container) {
         // Trang Chủ (index.html)
         fetchProducts();
+        initCategoryFilter();
     }
 }
 
-// Bắt đầu khởi tạo ứng dụng khi DOM đã sẵn sàng
 document.addEventListener('DOMContentLoaded', initApp);

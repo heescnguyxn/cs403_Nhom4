@@ -18,21 +18,23 @@
                 </div>
                 
                 <div class="search-bar">
-                    <input type="text" placeholder="Tìm kiếm...">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <form action="search.html" method="GET"> 
+                        <input type="text" name="q" placeholder="Tìm kiếm...">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
                 </div>
 
                 <div class="user-actions-group d-flex align-center">
-                    <div class="action-item cart-icon">
+                    <a href="cart.html" class="action-item cart-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span class="badge">0</span>
-                    </div>
+                    </a>
                     <div class="action-item heart-icon">
                         <i class="fa-solid fa-heart"></i>
                     </div>
-                    <div class="action-item user-profile">
+                    <a href="profile.html" class="action-item user-profile">
                         <i class="fa-solid fa-user"></i> Tài khoản
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -40,7 +42,7 @@
         <nav class="main-menu">
             <div class="container">
                 <ul class="d-flex">
-                    <li><a href="trangchu.html">Trang chủ</a></li>
+                    <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="#">Sản phẩm</a></li>
                     <li><a href="#">Khuyến mãi</a></li>
                     <li><a href="#">Tin tức</a></li>
@@ -70,35 +72,9 @@
                 </div>
             </div>
 
-            <div class="product-grid" id="search-results-container">
-                
-                <div class="product-card search-found">
-                    <span class="label-found">TÌM THẤY</span>
-                    <div class="product-img">
-                        <img src="https://images.samsung.com/is/image/samsung/p6pim/vn/2401/gallery/vn-galaxy-s24-s928-sm-s928bztqxxv-539299440?$650_519_PNG$" alt="Samsung Galaxy S24 Ultra">
-                    </div>
-                    <div class="product-info">
-                        <h3>Samsung Galaxy S24 Ultra</h3>
-                        <p class="product-sub-title">Samsung Galaxy S24 Ultra</p>
-                        <div class="price">28.990.000₫</div>
-                        <button class="btn-buy">Xem chi tiết</button>
-                    </div>
-                </div>
-
-                <div class="product-card search-found">
-                    <span class="label-found">TÌM THẤY</span>
-                    <div class="product-img">
-                        <img src="https://store.storeimages.cdn-apple.com/8756/as-images.apple.com/is/iphone-15-pro-max-natural-titanium-select?wid=470&hei=556&fmt=png-alpha" alt="Samsung Galaxy S24">
-                    </div>
-                    <div class="product-info">
-                        <h3>Samsung Galaxy S24</h3>
-                        <p class="product-sub-title">Samsung Galaxy S24</p>
-                        <div class="price">29.990.000₫</div>
-                        <button class="btn-buy">Xem chi tiết</button>
-                    </div>
-                </div>
-                
-                </div>
+            <div class="product-grid" id="product-list-container">
+                <p>Đang tải sản phẩm...</p>
+            </div>
         </section>
     </main>
 

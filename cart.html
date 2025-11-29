@@ -18,8 +18,10 @@
                 </div>
                 
                 <div class="search-bar">
-                    <input type="text" placeholder="Tìm kiếm...">
-                    <button><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <form action="search.html" method="GET"> 
+                        <input type="text" name="q" placeholder="Tìm kiếm...">
+                        <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    </form>
                 </div>
 
                 <div class="user-actions-group d-flex align-center">
@@ -31,7 +33,8 @@
                         <i class="fa-solid fa-heart"></i>
                     </div>
                     <a href="profile.html" class="action-item user-profile">
-                    <i class="fa-solid fa-user"></i> Tài khoản</a>
+                        <i class="fa-solid fa-user"></i> Tài khoản
+                    </a>
                 </div>
             </div>
         </div>
@@ -39,7 +42,7 @@
         <nav class="main-menu">
             <div class="container">
                 <ul class="d-flex">
-                    <li><a href="trangchu.html">Trang chủ</a></li>
+                    <li><a href="index.html">Trang chủ</a></li>
                     <li><a href="#">Sản phẩm</a></li>
                     <li><a href="#">Khuyến mãi</a></li>
                     <li><a href="#">Tin tức</a></li>
@@ -86,7 +89,7 @@
                             <button class="action-btn btn-delete"><i class="fa-solid fa-trash-can"></i> Xóa</button>
                         </td>
                     </tr>
-                    </tbody>
+                </tbody>
             </table>
         </section>
 
@@ -129,5 +132,5 @@
         </div>
     </footer>
 
-    </body>
+</body>
 </html>

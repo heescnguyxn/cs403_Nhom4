@@ -19,8 +19,11 @@ Mục tiêu chính của dự án:
    ```bash
    git clone https://github.com/heescnguyxn/cs403_Nhom4.git
    cd cs403_Nhom4
+   node server.js
     npm install
     npm start
+
+    server sẽ chạy ở http://localhost:3000/index.html
     
     //Cấu trúc thư mục
 cs403_Nhom4/
